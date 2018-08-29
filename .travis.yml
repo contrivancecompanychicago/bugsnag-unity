@@ -15,6 +15,7 @@ env:
   global:
     - TERM=dumb
     - PATH=$HOME/.local/bin:$PATH
+    - secure: JKMbMagwNRowgqXjPazHaexLd1MN6rKefqrsV666pNkfEM6/vL+i7mK43K14mcsbydfCTtblfAKHH041kaEj6OrhLHOagu3Dvu5+Omfu/XUTVMztpDPyNXXFeugnMr8yG6N2gZK5lngaHOSsW3+P0IZnKntTmXVdrnCp1R7DHD8=
 
 before_install:
   - pip install --user awscli
