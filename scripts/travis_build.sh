@@ -1,5 +1,6 @@
 #!/bin/sh -ue
 
+brew install mono
 brew tap caskroom/cask
 brew cask install android-sdk
 
@@ -7,13 +8,8 @@ yes | sdkmanager "platforms;android-27"
 yes | sdkmanager --licenses
 
 unity_url="https://download.unity3d.com/download_unity/21ae32b5a9cb/MacEditorInstaller/Unity-2017.4.3f1.pkg"
-mono_url="https://download.mono-project.com/archive/5.12.0/macos-10-universal/MonoFramework-MDK-5.12.0.226.macos10.xamarin.universal.pkg"
 
-curl -o Mono.pkg $mono_url & curl -o Unity.pkg $unity_url & wait
-
-sudo installer -dumplog -package Mono.pkg -target /
-
-export PATH="$PATH:/Library/Frameworks/Mono.framework/Versions/Current/Commands"
+curl -o Unity.pkg $unity_url
 
 sudo installer -dumplog -package Unity.pkg -target /
 

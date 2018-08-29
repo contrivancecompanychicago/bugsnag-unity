@@ -12,10 +12,12 @@ Task("Restore-NuGet-Packages")
 Task("Build")
   .IsDependentOn("Restore-NuGet-Packages")
   .Does(() => {
-    MSBuild(solution, settings =>
+    MSBuild(solution, settings => {
+      settings.ToolPath = "/usr/local/bin/msbuild";
       settings
         .SetVerbosity(Verbosity.Minimal)
-        .SetConfiguration(configuration));
+        .SetConfiguration(configuration);
+      });
   });
 
 Task("SetVersion")
