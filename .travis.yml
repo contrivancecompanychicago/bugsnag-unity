@@ -16,6 +16,7 @@ env:
     - TERM=dumb
     - PATH=$HOME/.local/bin:$PATH
     - secure: JKMbMagwNRowgqXjPazHaexLd1MN6rKefqrsV666pNkfEM6/vL+i7mK43K14mcsbydfCTtblfAKHH041kaEj6OrhLHOagu3Dvu5+Omfu/XUTVMztpDPyNXXFeugnMr8yG6N2gZK5lngaHOSsW3+P0IZnKntTmXVdrnCp1R7DHD8=
+    - secure: J/7ouYSEy5uF+kncHrlFq0YBFxfe1Thyw/8oDIewOGRAypTUhI9qiwvWzJoxXMiKhAWQTLYbmTNSc4dH57g0FQ84BHcUOALjfpZSjplhG+vks5LpEPLt9e4S6KRcx7q6ZUs0uYBFhUF7HG7LR1vWfxAKEHD/K6Xfvs0OgmVgxXs=
 
 before_install:
   - pip install --user awscli
