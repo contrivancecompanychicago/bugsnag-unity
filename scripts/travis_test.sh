@@ -4,6 +4,7 @@ curl -o Unity.pkg $UNITY_URL
 sudo installer -dumplog -package Unity.pkg -target /
 
 # copy the package to the root
+cp ~/$TRAVIS_BUILD_NUMBER/Bugsnag.unitypackage ./
 
 if [[ -z "${ANDROID_TARGET}" ]]; then
   yes | sdkmanager "platforms;$ANDROID_TARGET"
