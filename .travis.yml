@@ -28,108 +28,106 @@ stages:
   - test
   - deploy
 
-matrix:
-  include:
-  - name: "MacOS Unity 2017"
-    env:
-    - UNITY_URL="https://download.unity3d.com/download_unity/21ae32b5a9cb/MacEditorInstaller/Unity-2017.4.3f1.pkg"
-    script: bundle exec rake mazerunner\[macos\]
-  - name: "MacOS Unity 2018"
-    env:
-    - UNITY_URL="https://netstorage.unity3d.com/unity/1431a7d2ced7/MacEditorInstaller/Unity-2018.2.3f1.pkg"
-    script: bundle exec rake mazerunner\[macos\]
-  - name: "Android 16 Unity 2017"
-    language: android
-    android:
-      components:
-      - tools
-      - platform-tools
-      - build-tools-27.0.3
-      - android-16
-      - extra-android-m2repository
-      - sys-img-armeabi-v7a-android-16
-    env:
-    - UNITY_URL="https://download.unity3d.com/download_unity/21ae32b5a9cb/MacEditorInstaller/Unity-2017.4.3f1.pkg"
-    - ANDROID_TARGET=android-16
-    - ANDROID_ABI=armeabi-v7a
-    script: bundle exec rake mazerunner\[android\]
-  - name: "Android 16 Unity 2018"
-    language: android
-    android:
-      components:
-      - tools
-      - platform-tools
-      - build-tools-27.0.3
-      - android-16
-      - extra-android-m2repository
-      - sys-img-armeabi-v7a-android-16
-    env:
-    - UNITY_URL="https://netstorage.unity3d.com/unity/1431a7d2ced7/MacEditorInstaller/Unity-2018.2.3f1.pkg"
-    - ANDROID_TARGET=android-16
-    - ANDROID_ABI=armeabi-v7a
-    script: bundle exec rake mazerunner\[android\]
-  - name: "Android 19 Unity 2017"
-    language: android
-    android:
-      components:
-      - tools
-      - platform-tools
-      - build-tools-27.0.3
-      - android-19
-      - extra-android-m2repository
-      - sys-img-armeabi-v7a-android-19
-    env:
-    - UNITY_URL="https://download.unity3d.com/download_unity/21ae32b5a9cb/MacEditorInstaller/Unity-2017.4.3f1.pkg"
-    - ANDROID_TARGET=android-19
-    - ANDROID_ABI=armeabi-v7a
-    script: bundle exec rake mazerunner\[android\]
-  - name: "Android 19 Unity 2018"
-    language: android
-    android:
-      components:
-      - tools
-      - platform-tools
-      - build-tools-27.0.3
-      - android-19
-      - extra-android-m2repository
-      - sys-img-armeabi-v7a-android-19
-    env:
-    - UNITY_URL="https://netstorage.unity3d.com/unity/1431a7d2ced7/MacEditorInstaller/Unity-2018.2.3f1.pkg"
-    - ANDROID_TARGET=android-19
-    - ANDROID_ABI=armeabi-v7a
-    script: bundle exec rake mazerunner\[android\]
-  - name: "Android 21 Unity 2017"
-    language: android
-    android:
-      components:
-      - tools
-      - platform-tools
-      - build-tools-27.0.3
-      - android-21
-      - extra-android-m2repository
-      - sys-img-armeabi-v7a-android-21
-    env:
-    - UNITY_URL="https://download.unity3d.com/download_unity/21ae32b5a9cb/MacEditorInstaller/Unity-2017.4.3f1.pkg"
-    - ANDROID_TARGET=android-21
-    - ANDROID_ABI=armeabi-v7a
-    script: bundle exec rake mazerunner\[android\]
-  - name: "Android 21 Unity 2018"
-    language: android
-    android:
-      components:
-      - tools
-      - platform-tools
-      - build-tools-27.0.3
-      - android-21
-      - extra-android-m2repository
-      - sys-img-armeabi-v7a-android-21
-    env:
-    - UNITY_URL="https://netstorage.unity3d.com/unity/1431a7d2ced7/MacEditorInstaller/Unity-2018.2.3f1.pkg"
-    - ANDROID_TARGET=android-21
-    - ANDROID_ABI=armeabi-v7a
-    script: bundle exec rake mazerunner\[android\]
 jobs:
   include:
+    - name: "MacOS Unity 2017"
+      env:
+      - UNITY_URL="https://download.unity3d.com/download_unity/21ae32b5a9cb/MacEditorInstaller/Unity-2017.4.3f1.pkg"
+      script: bundle exec rake mazerunner\[macos\]
+    - name: "MacOS Unity 2018"
+      env:
+      - UNITY_URL="https://netstorage.unity3d.com/unity/1431a7d2ced7/MacEditorInstaller/Unity-2018.2.3f1.pkg"
+      script: bundle exec rake mazerunner\[macos\]
+    - name: "Android 16 Unity 2017"
+      language: android
+      android:
+        components:
+        - tools
+        - platform-tools
+        - build-tools-27.0.3
+        - android-16
+        - extra-android-m2repository
+        - sys-img-armeabi-v7a-android-16
+      env:
+      - UNITY_URL="https://download.unity3d.com/download_unity/21ae32b5a9cb/MacEditorInstaller/Unity-2017.4.3f1.pkg"
+      - ANDROID_TARGET=android-16
+      - ANDROID_ABI=armeabi-v7a
+      script: bundle exec rake mazerunner\[android\]
+    - name: "Android 16 Unity 2018"
+      language: android
+      android:
+        components:
+        - tools
+        - platform-tools
+        - build-tools-27.0.3
+        - android-16
+        - extra-android-m2repository
+        - sys-img-armeabi-v7a-android-16
+      env:
+      - UNITY_URL="https://netstorage.unity3d.com/unity/1431a7d2ced7/MacEditorInstaller/Unity-2018.2.3f1.pkg"
+      - ANDROID_TARGET=android-16
+      - ANDROID_ABI=armeabi-v7a
+      script: bundle exec rake mazerunner\[android\]
+    - name: "Android 19 Unity 2017"
+      language: android
+      android:
+        components:
+        - tools
+        - platform-tools
+        - build-tools-27.0.3
+        - android-19
+        - extra-android-m2repository
+        - sys-img-armeabi-v7a-android-19
+      env:
+      - UNITY_URL="https://download.unity3d.com/download_unity/21ae32b5a9cb/MacEditorInstaller/Unity-2017.4.3f1.pkg"
+      - ANDROID_TARGET=android-19
+      - ANDROID_ABI=armeabi-v7a
+      script: bundle exec rake mazerunner\[android\]
+    - name: "Android 19 Unity 2018"
+      language: android
+      android:
+        components:
+        - tools
+        - platform-tools
+        - build-tools-27.0.3
+        - android-19
+        - extra-android-m2repository
+        - sys-img-armeabi-v7a-android-19
+      env:
+      - UNITY_URL="https://netstorage.unity3d.com/unity/1431a7d2ced7/MacEditorInstaller/Unity-2018.2.3f1.pkg"
+      - ANDROID_TARGET=android-19
+      - ANDROID_ABI=armeabi-v7a
+      script: bundle exec rake mazerunner\[android\]
+    - name: "Android 21 Unity 2017"
+      language: android
+      android:
+        components:
+        - tools
+        - platform-tools
+        - build-tools-27.0.3
+        - android-21
+        - extra-android-m2repository
+        - sys-img-armeabi-v7a-android-21
+      env:
+      - UNITY_URL="https://download.unity3d.com/download_unity/21ae32b5a9cb/MacEditorInstaller/Unity-2017.4.3f1.pkg"
+      - ANDROID_TARGET=android-21
+      - ANDROID_ABI=armeabi-v7a
+      script: bundle exec rake mazerunner\[android\]
+    - name: "Android 21 Unity 2018"
+      language: android
+      android:
+        components:
+        - tools
+        - platform-tools
+        - build-tools-27.0.3
+        - android-21
+        - extra-android-m2repository
+        - sys-img-armeabi-v7a-android-21
+      env:
+      - UNITY_URL="https://netstorage.unity3d.com/unity/1431a7d2ced7/MacEditorInstaller/Unity-2018.2.3f1.pkg"
+      - ANDROID_TARGET=android-21
+      - ANDROID_ABI=armeabi-v7a
+      script: bundle exec rake mazerunner\[android\]
     - stage: build
       script: scripts/travis_build.sh
       env:
