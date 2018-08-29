@@ -13,6 +13,7 @@ cache:
 env:
   # TODO: add aws access key that can access the bugsnag-unity build artifacts bucket
   global:
+    - TERM=dumb
     - PATH=$HOME/.local/bin:$PATH
 
 before_install:
@@ -24,10 +25,6 @@ stages:
   - build
   - test
   - deploy
-
-env:
-  global:
-  - TERM=dumb
 
 matrix:
   include:
