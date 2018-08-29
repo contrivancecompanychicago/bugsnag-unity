@@ -11,7 +11,6 @@ cache:
   - "$HOME/.android/build-cache"
   - "$HOME/Library/Caches/Homebrew"
 env:
-  # TODO: add aws access key that can access the bugsnag-unity build artifacts bucket
   global:
     - TERM=dumb
     - ANDROID_HOME=/usr/local/share/android-sdk
