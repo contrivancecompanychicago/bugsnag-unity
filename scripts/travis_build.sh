@@ -41,22 +41,22 @@ sleep 10
 set +e
 
 # build the plugin
-UNITY_DIR=/Applications/Unity2017 bundle exec rake plugin:export && handle_failure
+UNITY_DIR=/Applications/Unity2017 bundle exec rake plugin:export || handle_failure $?
 
 # copy it to the directory that is being synchronised with S3
-cp Bugsnag.unitypackage ~/$TRAVIS_BUILD_NUMBER && handle_failure
+cp Bugsnag.unitypackage ~/$TRAVIS_BUILD_NUMBER || handle_failure $?
 
-mkdir -p ~/$TRAVIS_BUILD_NUMBER/2017 && handle_failure
-UNITY_DIR=/Applications/Unity2017 bundle exec rake travis:build_applications && handle_failure
-UNITY_DIR=/Applications/Unity2017 bundle exec rake travis:build_applications && handle_failure
-cp -r features/fixtures/mazerunner.app ~/$TRAVIS_BUILD_NUMBER/2017/mazerunner.app && handle_failure
-cp features/fixtures/mazerunner.apk ~/$TRAVIS_BUILD_NUMBER/2017/mazerunner.apk && handle_failure
+mkdir -p ~/$TRAVIS_BUILD_NUMBER/2017 || handle_failure $?
+UNITY_DIR=/Applications/Unity2017 bundle exec rake travis:build_applications || handle_failure $?
+UNITY_DIR=/Applications/Unity2017 bundle exec rake travis:build_applications || handle_failure $?
+cp -r features/fixtures/mazerunner.app ~/$TRAVIS_BUILD_NUMBER/2017/mazerunner.app || handle_failure $?
+cp features/fixtures/mazerunner.apk ~/$TRAVIS_BUILD_NUMBER/2017/mazerunner.apk || handle_failure $?
 
-mkdir -p ~/$TRAVIS_BUILD_NUMBER/2018 && handle_failure
-UNITY_DIR=/Applications/Unity2018 bundle exec rake travis:build_applications && handle_failure
-UNITY_DIR=/Applications/Unity2018 bundle exec rake travis:build_applications && handle_failure
-cp -r features/fixtures/mazerunner.app ~/$TRAVIS_BUILD_NUMBER/2018/mazerunner.app && handle_failure
-cp features/fixtures/mazerunner.apk ~/$TRAVIS_BUILD_NUMBER/2018/mazerunner.apk && handle_failure
+mkdir -p ~/$TRAVIS_BUILD_NUMBER/2018 || handle_failure $?
+UNITY_DIR=/Applications/Unity2018 bundle exec rake travis:build_applications || handle_failure $?
+UNITY_DIR=/Applications/Unity2018 bundle exec rake travis:build_applications || handle_failure $?
+cp -r features/fixtures/mazerunner.app ~/$TRAVIS_BUILD_NUMBER/2018/mazerunner.app || handle_failure $?
+cp features/fixtures/mazerunner.apk ~/$TRAVIS_BUILD_NUMBER/2018/mazerunner.apk || handle_failure $?
 
 set -e
 
