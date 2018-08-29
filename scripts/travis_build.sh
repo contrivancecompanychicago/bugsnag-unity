@@ -24,11 +24,11 @@ yes | sdkmanager --licenses
 
 curl -o Unity.pkg https://download.unity3d.com/download_unity/21ae32b5a9cb/MacEditorInstaller/Unity-2017.4.3f1.pkg
 sudo installer -dumplog -package Unity.pkg -target /
-mv /Applications/Unity /Application/Unity2017
+mv /Applications/Unity /Applications/Unity2017
 
 curl -o Unity.pkg https://netstorage.unity3d.com/unity/1431a7d2ced7/MacEditorInstaller/Unity-2018.2.3f1.pkg
 sudo installer -dumplog -package Unity.pkg -target /
-mv /Applications/Unity /Application/Unity2018
+mv /Applications/Unity /Applications/Unity2018
 
 ln -s /Applications/Unity2017 /Applications/Unity
 
