@@ -69,7 +69,31 @@ def assets_path
   File.join(project_path, "Assets", "Plugins")
 end
 
-def maze_runner(args)
+def output_project_path
+  File.join(current_directory, "features", "fixtures", "unity_project")
+end
+
+def package_output
+  File.join(current_directory, "Bugsnag.unitypackage")
+end
+
+def build_maze_runner_applications
+  cd "features" do
+    cd "fixtures" do
+      sh "git", "clean", "-xdf"
+      unity "-createProject", output_project_path
+      unity "-projectPath", output_project_path, "-importPackage", package_output
+      cp "Main.cs", File.join(output_project_path, "Assets")
+      unity "-projectPath", output_project_path, "-executeMethod", "Main.CreateScene"
+
+      ["MacOS", "Android"].each do |platform|
+        unity "-projectPath", output_project_path, "-executeMethod", "Main.#{platform}"
+      end
+    end
+  end
+end
+
+def maze_runner(args = {})
   command = ["bundle", "exec", "bugsnag-maze-runner"]
 
   if args[:tag]
@@ -211,7 +235,6 @@ namespace :plugin do
   end
 
   task export: %w[plugin:build:all] do
-    package_output = File.join(current_directory, "Bugsnag.unitypackage")
     rm_f package_output
     unity "-projectPath", project_path, "-exportPackage", "Assets", package_output
   end
@@ -222,7 +245,10 @@ namespace :plugin do
 end
 
 namespace :travis do
-  # run the maze runner task without building the plugin first as
+  task :build_applications do
+    build_maze_runner_applications
+  end
+
   task :maze_runner, [:tag] do |_, args|
     maze_runner args
   end
@@ -258,4 +284,14 @@ namespace :example do
   end
 end
 
-task default: %w[plugin:maze_runner]
+namespace :maze_runner do
+  task build_applications: %w[plugin:export] do
+    build_maze_runner_applications
+  end
+
+  task :run, [:tag] => %w[maze_runner:build_applications] do |_, args|
+    maze_runner args
+  end
+end
+
+task default: %w[maze_runner:local]

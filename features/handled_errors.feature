@@ -1,10 +1,7 @@
 Feature: Handled Errors and Exceptions
 
 Scenario Outline: Reporting a handled exception
-  Given I configure the bugsnag notify endpoint with "<endpoint>"
-  And I set environment variable "BUGSNAG_APIKEY" to "a35a2a72bd230ac0aa0f52715bbdc6aa"
-  When I build a Unity application for "<platform>"
-  And run the <platform> application
+  When I run the <platform> application
   Then I should receive a request
   And the request is a valid for the error reporting API
   And the "Bugsnag-API-Key" header equals "a35a2a72bd230ac0aa0f52715bbdc6aa"
@@ -15,10 +12,10 @@ Scenario Outline: Reporting a handled exception
 
 @android
 Examples:
-  | platform | endpoint   |
-  | Android  | 10.0.2.2   |
+  | platform  |
+  | Android   |
 
 @macos
 Examples:
-  | platform | endpoint   |
-  | MacOS    | localhost  |
+  | platform  |
+  | MacOS     |

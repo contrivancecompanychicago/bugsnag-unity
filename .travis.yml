@@ -1,5 +1,3 @@
-os: osx
-osx_image: xcode9.3
 before_cache:
 - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
 - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
@@ -13,12 +11,15 @@ cache:
 env:
   global:
     - TERM=dumb
+    - MOCK_API_PORT=9339
+    - BUGSNAG_API_KEY=a35a2a72bd230ac0aa0f52715bbdc6aa
     - ANDROID_HOME=/usr/local/share/android-sdk
     - PATH=$HOME/Library/Python/2.7/bin:$PATH
     - secure: JKMbMagwNRowgqXjPazHaexLd1MN6rKefqrsV666pNkfEM6/vL+i7mK43K14mcsbydfCTtblfAKHH041kaEj6OrhLHOagu3Dvu5+Omfu/XUTVMztpDPyNXXFeugnMr8yG6N2gZK5lngaHOSsW3+P0IZnKntTmXVdrnCp1R7DHD8=
     - secure: J/7ouYSEy5uF+kncHrlFq0YBFxfe1Thyw/8oDIewOGRAypTUhI9qiwvWzJoxXMiKhAWQTLYbmTNSc4dH57g0FQ84BHcUOALjfpZSjplhG+vks5LpEPLt9e4S6KRcx7q6ZUs0uYBFhUF7HG7LR1vWfxAKEHD/K6Xfvs0OgmVgxXs=
 
 before_install:
+  - bundle install
   - pip install --user awscli
   - mkdir -p ~/$TRAVIS_BUILD_NUMBER
   - aws s3 sync s3://bugsnag-unity-artifacts/$TRAVIS_BUILD_NUMBER ~/$TRAVIS_BUILD_NUMBER
@@ -31,12 +32,14 @@ stages:
 jobs:
   include:
     - name: "MacOS Unity 2017"
+      os: osx
       env:
-      - UNITY_URL="https://download.unity3d.com/download_unity/21ae32b5a9cb/MacEditorInstaller/Unity-2017.4.3f1.pkg"
+      - UNITY_YEAR=2017
       script: scripts/travis_test.sh
     - name: "MacOS Unity 2018"
+      os: osx
       env:
-      - UNITY_URL="https://netstorage.unity3d.com/unity/1431a7d2ced7/MacEditorInstaller/Unity-2018.2.3f1.pkg"
+      - UNITY_YEAR=2018
       script: scripts/travis_test.sh
     - name: "Android 16 Unity 2017"
       language: android
@@ -49,7 +52,7 @@ jobs:
         - extra-android-m2repository
         - sys-img-armeabi-v7a-android-16
       env:
-      - UNITY_URL="https://download.unity3d.com/download_unity/21ae32b5a9cb/MacEditorInstaller/Unity-2017.4.3f1.pkg"
+      - UNITY_YEAR=2017
       - ANDROID_TARGET=android-16
       - ANDROID_ABI=armeabi-v7a
       script: scripts/travis_test.sh
@@ -64,7 +67,7 @@ jobs:
         - extra-android-m2repository
         - sys-img-armeabi-v7a-android-16
       env:
-      - UNITY_URL="https://netstorage.unity3d.com/unity/1431a7d2ced7/MacEditorInstaller/Unity-2018.2.3f1.pkg"
+      - UNITY_YEAR=2018
       - ANDROID_TARGET=android-16
       - ANDROID_ABI=armeabi-v7a
       script: scripts/travis_test.sh
@@ -79,7 +82,7 @@ jobs:
         - extra-android-m2repository
         - sys-img-armeabi-v7a-android-19
       env:
-      - UNITY_URL="https://download.unity3d.com/download_unity/21ae32b5a9cb/MacEditorInstaller/Unity-2017.4.3f1.pkg"
+      - UNITY_YEAR=2017
       - ANDROID_TARGET=android-19
       - ANDROID_ABI=armeabi-v7a
       script: scripts/travis_test.sh
@@ -94,7 +97,7 @@ jobs:
         - extra-android-m2repository
         - sys-img-armeabi-v7a-android-19
       env:
-      - UNITY_URL="https://netstorage.unity3d.com/unity/1431a7d2ced7/MacEditorInstaller/Unity-2018.2.3f1.pkg"
+      - UNITY_YEAR=2018
       - ANDROID_TARGET=android-19
       - ANDROID_ABI=armeabi-v7a
       script: scripts/travis_test.sh
@@ -109,7 +112,7 @@ jobs:
         - extra-android-m2repository
         - sys-img-armeabi-v7a-android-21
       env:
-      - UNITY_URL="https://download.unity3d.com/download_unity/21ae32b5a9cb/MacEditorInstaller/Unity-2017.4.3f1.pkg"
+      - UNITY_YEAR=2017
       - ANDROID_TARGET=android-21
       - ANDROID_ABI=armeabi-v7a
       script: scripts/travis_test.sh
@@ -124,11 +127,13 @@ jobs:
         - extra-android-m2repository
         - sys-img-armeabi-v7a-android-21
       env:
-      - UNITY_URL="https://netstorage.unity3d.com/unity/1431a7d2ced7/MacEditorInstaller/Unity-2018.2.3f1.pkg"
+      - UNITY_YEAR=2018
       - ANDROID_TARGET=android-21
       - ANDROID_ABI=armeabi-v7a
       script: scripts/travis_test.sh
     - stage: build
+      os: osx
+      osx_image: xcode9.3
       script: scripts/travis_build.sh
       env:
       - secure: gvj3mPdnIF1TzN2hNo9xv8/40IUNLE7/g9vFof7EamJrFBpEkGSU9pxTt5QVhSI4GKlZD+epDXPzGNryJ9nyc9eF11AdgX7g/4+GBAk80R0JJPaEfrVv/1RMDeeEmUduWdV3G68yyUEEEshD2jYdYRetsHSdGHcT6WfdQcQe9eM=
