@@ -14,6 +14,7 @@ env:
   # TODO: add aws access key that can access the bugsnag-unity build artifacts bucket
   global:
     - TERM=dumb
+    - ANDROID_HOME=/usr/local/share/android-sdk
     - PATH=$HOME/Library/Python/2.7/bin:$PATH
     - secure: JKMbMagwNRowgqXjPazHaexLd1MN6rKefqrsV666pNkfEM6/vL+i7mK43K14mcsbydfCTtblfAKHH041kaEj6OrhLHOagu3Dvu5+Omfu/XUTVMztpDPyNXXFeugnMr8yG6N2gZK5lngaHOSsW3+P0IZnKntTmXVdrnCp1R7DHD8=
     - secure: J/7ouYSEy5uF+kncHrlFq0YBFxfe1Thyw/8oDIewOGRAypTUhI9qiwvWzJoxXMiKhAWQTLYbmTNSc4dH57g0FQ84BHcUOALjfpZSjplhG+vks5LpEPLt9e4S6KRcx7q6ZUs0uYBFhUF7HG7LR1vWfxAKEHD/K6Xfvs0OgmVgxXs=
@@ -50,7 +51,6 @@ matrix:
       - sys-img-armeabi-v7a-android-16
     env:
     - UNITY_URL="https://download.unity3d.com/download_unity/21ae32b5a9cb/MacEditorInstaller/Unity-2017.4.3f1.pkg"
-    - ANDROID_HOME=/usr/local/share/android-sdk
     - ANDROID_TARGET=android-16
     - ANDROID_ABI=armeabi-v7a
     script: bundle exec rake mazerunner\[android\]
@@ -66,7 +66,6 @@ matrix:
       - sys-img-armeabi-v7a-android-16
     env:
     - UNITY_URL="https://netstorage.unity3d.com/unity/1431a7d2ced7/MacEditorInstaller/Unity-2018.2.3f1.pkg"
-    - ANDROID_HOME=/usr/local/share/android-sdk
     - ANDROID_TARGET=android-16
     - ANDROID_ABI=armeabi-v7a
     script: bundle exec rake mazerunner\[android\]
@@ -82,7 +81,6 @@ matrix:
       - sys-img-armeabi-v7a-android-19
     env:
     - UNITY_URL="https://download.unity3d.com/download_unity/21ae32b5a9cb/MacEditorInstaller/Unity-2017.4.3f1.pkg"
-    - ANDROID_HOME=/usr/local/share/android-sdk
     - ANDROID_TARGET=android-19
     - ANDROID_ABI=armeabi-v7a
     script: bundle exec rake mazerunner\[android\]
@@ -98,7 +96,6 @@ matrix:
       - sys-img-armeabi-v7a-android-19
     env:
     - UNITY_URL="https://netstorage.unity3d.com/unity/1431a7d2ced7/MacEditorInstaller/Unity-2018.2.3f1.pkg"
-    - ANDROID_HOME=/usr/local/share/android-sdk
     - ANDROID_TARGET=android-19
     - ANDROID_ABI=armeabi-v7a
     script: bundle exec rake mazerunner\[android\]
@@ -114,7 +111,6 @@ matrix:
       - sys-img-armeabi-v7a-android-21
     env:
     - UNITY_URL="https://download.unity3d.com/download_unity/21ae32b5a9cb/MacEditorInstaller/Unity-2017.4.3f1.pkg"
-    - ANDROID_HOME=/usr/local/share/android-sdk
     - ANDROID_TARGET=android-21
     - ANDROID_ABI=armeabi-v7a
     script: bundle exec rake mazerunner\[android\]
@@ -130,7 +126,6 @@ matrix:
       - sys-img-armeabi-v7a-android-21
     env:
     - UNITY_URL="https://netstorage.unity3d.com/unity/1431a7d2ced7/MacEditorInstaller/Unity-2018.2.3f1.pkg"
-    - ANDROID_HOME=/usr/local/share/android-sdk
     - ANDROID_TARGET=android-21
     - ANDROID_ABI=armeabi-v7a
     script: bundle exec rake mazerunner\[android\]
