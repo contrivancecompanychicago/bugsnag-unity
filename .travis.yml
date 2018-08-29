@@ -33,11 +33,11 @@ jobs:
     - name: "MacOS Unity 2017"
       env:
       - UNITY_URL="https://download.unity3d.com/download_unity/21ae32b5a9cb/MacEditorInstaller/Unity-2017.4.3f1.pkg"
-      script: bundle exec rake mazerunner\[macos\]
+      script: scripts/travis_test.sh
     - name: "MacOS Unity 2018"
       env:
       - UNITY_URL="https://netstorage.unity3d.com/unity/1431a7d2ced7/MacEditorInstaller/Unity-2018.2.3f1.pkg"
-      script: bundle exec rake mazerunner\[macos\]
+      script: scripts/travis_test.sh
     - name: "Android 16 Unity 2017"
       language: android
       android:
@@ -52,7 +52,7 @@ jobs:
       - UNITY_URL="https://download.unity3d.com/download_unity/21ae32b5a9cb/MacEditorInstaller/Unity-2017.4.3f1.pkg"
       - ANDROID_TARGET=android-16
       - ANDROID_ABI=armeabi-v7a
-      script: bundle exec rake mazerunner\[android\]
+      script: scripts/travis_test.sh
     - name: "Android 16 Unity 2018"
       language: android
       android:
@@ -67,7 +67,7 @@ jobs:
       - UNITY_URL="https://netstorage.unity3d.com/unity/1431a7d2ced7/MacEditorInstaller/Unity-2018.2.3f1.pkg"
       - ANDROID_TARGET=android-16
       - ANDROID_ABI=armeabi-v7a
-      script: bundle exec rake mazerunner\[android\]
+      script: scripts/travis_test.sh
     - name: "Android 19 Unity 2017"
       language: android
       android:
@@ -82,7 +82,7 @@ jobs:
       - UNITY_URL="https://download.unity3d.com/download_unity/21ae32b5a9cb/MacEditorInstaller/Unity-2017.4.3f1.pkg"
       - ANDROID_TARGET=android-19
       - ANDROID_ABI=armeabi-v7a
-      script: bundle exec rake mazerunner\[android\]
+      script: scripts/travis_test.sh
     - name: "Android 19 Unity 2018"
       language: android
       android:
@@ -97,7 +97,7 @@ jobs:
       - UNITY_URL="https://netstorage.unity3d.com/unity/1431a7d2ced7/MacEditorInstaller/Unity-2018.2.3f1.pkg"
       - ANDROID_TARGET=android-19
       - ANDROID_ABI=armeabi-v7a
-      script: bundle exec rake mazerunner\[android\]
+      script: scripts/travis_test.sh
     - name: "Android 21 Unity 2017"
       language: android
       android:
@@ -112,7 +112,7 @@ jobs:
       - UNITY_URL="https://download.unity3d.com/download_unity/21ae32b5a9cb/MacEditorInstaller/Unity-2017.4.3f1.pkg"
       - ANDROID_TARGET=android-21
       - ANDROID_ABI=armeabi-v7a
-      script: bundle exec rake mazerunner\[android\]
+      script: scripts/travis_test.sh
     - name: "Android 21 Unity 2018"
       language: android
       android:
@@ -127,7 +127,7 @@ jobs:
       - UNITY_URL="https://netstorage.unity3d.com/unity/1431a7d2ced7/MacEditorInstaller/Unity-2018.2.3f1.pkg"
       - ANDROID_TARGET=android-21
       - ANDROID_ABI=armeabi-v7a
-      script: bundle exec rake mazerunner\[android\]
+      script: scripts/travis_test.sh
     - stage: build
       script: scripts/travis_build.sh
       env:
