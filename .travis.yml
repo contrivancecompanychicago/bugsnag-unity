@@ -17,7 +17,7 @@ env:
     - secure: JKMbMagwNRowgqXjPazHaexLd1MN6rKefqrsV666pNkfEM6/vL+i7mK43K14mcsbydfCTtblfAKHH041kaEj6OrhLHOagu3Dvu5+Omfu/XUTVMztpDPyNXXFeugnMr8yG6N2gZK5lngaHOSsW3+P0IZnKntTmXVdrnCp1R7DHD8=
     - secure: J/7ouYSEy5uF+kncHrlFq0YBFxfe1Thyw/8oDIewOGRAypTUhI9qiwvWzJoxXMiKhAWQTLYbmTNSc4dH57g0FQ84BHcUOALjfpZSjplhG+vks5LpEPLt9e4S6KRcx7q6ZUs0uYBFhUF7HG7LR1vWfxAKEHD/K6Xfvs0OgmVgxXs=
 
-before_install:
+before_install: &before_install
   - bundle install
   - pip install --user awscli
   - mkdir -p ~/$TRAVIS_BUILD_NUMBER
@@ -32,14 +32,17 @@ jobs:
   include:
     - name: "MacOS Unity 2017"
       before_install:
+      <<: *before_install
       - brew cask install bugsnag/unity/unity-2017-4-1f1
       script: scripts/travis_test.sh
     - name: "MacOS Unity 2018"
       before_install:
+      <<: *before_install
       - brew cask install bugsnag/unity/unity-2018-2-5f1
       script: scripts/travis_test.sh
     - name: "Android 16 Unity 2017"
       before_install:
+      <<: *before_install
       - brew cask install bugsnag/unity/unity-2017-4-1f1
       - brew cask install bugsnag/unity/unity-android-support-for-editor-2017-4-1f1
       language: android
@@ -57,6 +60,7 @@ jobs:
       script: scripts/travis_test.sh
     - name: "Android 16 Unity 2018"
       before_install:
+      <<: *before_install
       - brew cask install bugsnag/unity/unity-2018-2-5f1
       - brew cask install bugsnag/unity/unity-android-support-for-editor-2018-2-5f1
       language: android
@@ -74,6 +78,7 @@ jobs:
       script: scripts/travis_test.sh
     - name: "Android 19 Unity 2017"
       before_install:
+      <<: *before_install
       - brew cask install bugsnag/unity/unity-2017-4-1f1
       - brew cask install bugsnag/unity/unity-android-support-for-editor-2017-4-1f1
       language: android
@@ -91,6 +96,7 @@ jobs:
       script: scripts/travis_test.sh
     - name: "Android 19 Unity 2018"
       before_install:
+      <<: *before_install
       - brew cask install bugsnag/unity/unity-2018-2-5f1
       - brew cask install bugsnag/unity/unity-android-support-for-editor-2018-2-5f1
       language: android
@@ -108,6 +114,7 @@ jobs:
       script: scripts/travis_test.sh
     - name: "Android 21 Unity 2017"
       before_install:
+      <<: *before_install
       - brew cask install bugsnag/unity/unity-2017-4-1f1
       - brew cask install bugsnag/unity/unity-android-support-for-editor-2017-4-1f1
       language: android
@@ -125,6 +132,7 @@ jobs:
       script: scripts/travis_test.sh
     - name: "Android 21 Unity 2018"
       before_install:
+      <<: *before_install
       - brew cask install bugsnag/unity/unity-2018-2-5f1
       - brew cask install bugsnag/unity/unity-android-support-for-editor-2018-2-5f1
       language: android
