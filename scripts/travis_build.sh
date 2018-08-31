@@ -1,5 +1,20 @@
 #!/bin/sh -ue
 
+return_unity_license () {
+  # return the Unity license as we can only have two simultaneous activations of each license
+  /Applications/Unity/Unity.app/Contents/MacOS/Unity -quit -batchmode -returnlicense -logFile unity.log
+  # usage suggests that sometimes this can take longer than the command so wait for the above command to take effect
+  sleep 10
+}
+
+handle_failure () {
+  exit_code=${1:-}
+  if [[ $exit_code -ne 0 ]]; then
+    return_unity_license
+    exit $exit_code
+  fi
+}
+
 brew install mono
 brew tap caskroom/cask
 brew cask install android-sdk
@@ -27,9 +42,4 @@ cp Bugsnag.unitypackage ~/$TRAVIS_BUILD_NUMBER || handle_failure $?
 
 set -e
 
-# return the Unity license as we can only have two simultaneous activations of each license
-/Applications/Unity/Unity.app/Contents/MacOS/Unity -quit -batchmode -returnlicense -logFile unity.log
-# usage suggests that sometimes this can take longer than the command so wait for the above command to take effect
-sleep 10
-
-exit $exit_status
+return_unity_license
