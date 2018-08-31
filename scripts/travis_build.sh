@@ -19,25 +19,19 @@ brew install mono
 brew tap caskroom/cask
 brew cask install android-sdk
 
-yes | sdkmanager "platforms;android-27"
-yes | sdkmanager --licenses
+brew cask install "bugsnag/unity/unity-2018.2.5.f1"
+brew cask install "bugsnag/unity/unity-ios-support-for-editor-2018.2.5.f1"
+brew cask install "bugsnag/unity/unity-android-support-for-editor-2018.2.5f1"
+mv /Applications/Unity /Applications/Unity2018
 
-curl -o Unity.pkg https://netstorage.unity3d.com/unity/9231f953d9d3/MacEditorInstaller/Unity.pkg
-sudo installer -dumplog -package Unity.pkg -target /
-curl -o Unity.pkg https://netstorage.unity3d.com/unity/9231f953d9d3/MacEditorTargetInstaller/UnitySetup-iOS-Support-for-Editor-2017.4.1f1.pkg
-sudo installer -dumplog -package Unity.pkg -target /
-curl -o Unity.pkg https://netstorage.unity3d.com/unity/9231f953d9d3/MacEditorTargetInstaller/UnitySetup-Android-Support-for-Editor-2017.4.1f1.pkg
-sudo installer -dumplog -package Unity.pkg -target /
+brew cask install "bugsnag/unity/unity-2017.4.1f1"
+brew cask install "bugsnag/unity/unity-ios-support-for-editor-2017.4.1f1"
+brew cask install "bugsnag/unity/unity-android-support-for-editor-2017.4.1f1"
 mv /Applications/Unity /Applications/Unity2017
 ln -s /Applications/Unity2017 /Applications/Unity
 
-curl -o Unity.pkg https://netstorage.unity3d.com/unity/1431a7d2ced7/MacEditorInstaller/Unity-2018.2.3f1.pkg
-sudo installer -dumplog -package Unity.pkg -target /
-curl -o Unity.pkg https://netstorage.unity3d.com/unity/1431a7d2ced7/MacEditorTargetInstaller/UnitySetup-iOS-Support-for-Editor-2018.2.3f1.pkg
-sudo installer -dumplog -package Unity.pkg -target /
-curl -o Unity.pkg https://netstorage.unity3d.com/unity/1431a7d2ced7/MacEditorTargetInstaller/UnitySetup-Android-Support-for-Editor-2018.2.3f1.pkg
-sudo installer -dumplog -package Unity.pkg -target /
-mv /Applications/Unity /Applications/Unity2018
+yes | sdkmanager "platforms;android-27"
+yes | sdkmanager --licenses
 
 # activate Unity
 /Applications/Unity/Unity.app/Contents/MacOS/Unity -quit -batchmode -serial $UNITY_SERIAL -username $UNITY_USERNAME -password $UNITY_PASSWORD -logFile unity.log
