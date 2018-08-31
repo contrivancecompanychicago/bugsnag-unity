@@ -19,14 +19,14 @@ brew install mono
 brew tap caskroom/cask
 brew cask install android-sdk
 
-brew cask install "bugsnag/unity/unity-2018.2.5.f1"
-brew cask install "bugsnag/unity/unity-ios-support-for-editor-2018.2.5.f1"
-brew cask install "bugsnag/unity/unity-android-support-for-editor-2018.2.5f1"
+brew cask install bugsnag/unity/unity-2018-2-5f1
+brew cask install bugsnag/unity/unity-ios-support-for-editor-2018-2-5f1
+brew cask install bugsnag/unity/unity-android-support-for-editor-2018-2-5f1
 mv /Applications/Unity /Applications/Unity2018
 
-brew cask install "bugsnag/unity/unity-2017.4.1f1"
-brew cask install "bugsnag/unity/unity-ios-support-for-editor-2017.4.1f1"
-brew cask install "bugsnag/unity/unity-android-support-for-editor-2017.4.1f1"
+brew cask install bugsnag/unity/unity-2017-4-1f1
+brew cask install bugsnag/unity/unity-ios-support-for-editor-2017-4-1f1
+brew cask install bugsnag/unity/unity-android-support-for-editor-2017-4-1f1
 mv /Applications/Unity /Applications/Unity2017
 ln -s /Applications/Unity2017 /Applications/Unity
 
