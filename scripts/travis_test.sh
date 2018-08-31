@@ -5,7 +5,6 @@ sudo installer -dumplog -package Unity.pkg -target /
 
 # copy the package to the root
 cp ~/$TRAVIS_BUILD_NUMBER/Bugsnag.unitypackage ./
-cp ~/$TRAVIS_BUILD_NUMBER/$UNITY_YEAR/* ./features/fixtures
 
 if [[ -z "${ANDROID_TARGET}" ]]; then
   yes | sdkmanager "platforms;$ANDROID_TARGET"

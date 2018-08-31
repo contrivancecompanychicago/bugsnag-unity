@@ -13,7 +13,7 @@ public class Main : MonoBehaviour {
     UnityEngine.SceneManagement.SceneManager.SetActiveScene(scene);
     var obj = new GameObject("Bugsnag");
     var bugsnag = obj.AddComponent<BugsnagUnity.BugsnagBehaviour>();
-    bugsnag.BugsnagApiKey = System.Environment.GetEnvironmentVariable("BUGSNAG_API_KEY");
+    bugsnag.BugsnagApiKey = System.Environment.GetEnvironmentVariable("BUGSNAG_APIKEY");
     bugsnag.Notify = System.Environment.GetEnvironmentVariable("MAZE_ENDPOINT");
     obj.AddComponent<Main>();
     UnityEditor.SceneManagement.EditorSceneManager.SaveScene(scene, "Assets/MainScene.unity");
