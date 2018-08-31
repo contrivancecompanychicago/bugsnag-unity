@@ -20,8 +20,6 @@ brew tap caskroom/cask
 brew cask install android-sdk
 
 brew cask install bugsnag/unity/unity-2017-4-1f1
-brew cask install bugsnag/unity/unity-ios-support-for-editor-2017-4-1f1
-brew cask install bugsnag/unity/unity-android-support-for-editor-2017-4-1f1
 
 yes | sdkmanager "platforms;android-27"
 yes | sdkmanager --licenses
