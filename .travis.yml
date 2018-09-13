@@ -12,7 +12,4 @@ cache:
 env:
   global:
   - TERM=dumb
-  - secure: RVVOkt/BqVdk/mALPjYnylE8u/7nFzKH4GmKgJrCh2l4yCdBTzXTFFTDHBgLILUpSyrj7uflSZ65SSe4VQIFKFkH5/1pFo5/FZDReDv3hpWvAT/E7p3yxyKWDLY0o/l7Ng5HnPAV18LjTrEKW+1SG88LYIhQ7DNAc/wmgZsqdYw=
-  - secure: H94HWGRQ2SXoWMCnPoomI6goE6uU8cekTIWF4rIFZ246MPKZi8LsL/j9SwL8oHC5K4A4bb2l+pq0fXfoU4GGjn2rjYFvTLa50m98loFBw3JYP6Nu2NiF7pa7EgeUlFmVBz++ioegcARxmlPxaWZy7hk1WHBivGjXCmxXZHj361M=
-  - secure: V2QWPLVBVirrrdQjM+CUSh4hTLK1iFrz3olFPsxMHLgNyAITAItolLMA+4TEHWkLGffxLdPgVkHteGKINlaHebafyIDnd3meEA+5iiwe5W866BB0QA9tj7fnfU2IMjEQm9UaSoX/JgeQExRo3yUR4QhZfE7bLUQo9Zi3s8U7KFU=
 script: scripts/travis_build_package.sh
