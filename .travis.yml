@@ -12,4 +12,12 @@ cache:
 env:
   global:
   - TERM=dumb
+  - PATH=$HOME/Library/Python/2.7/bin:$PATH
+before_install:
+- bundle install
+- pip install --user awscli
+- mkdir -p ~/$TRAVIS_BUILD_NUMBER
+- aws s3 sync s3://bugsnag-unity-artifacts/$TRAVIS_BUILD_NUMBER ~/$TRAVIS_BUILD_NUMBER
 script: scripts/travis_build_package.sh
+after_success:
+- aws s3 sync ~/$TRAVIS_BUILD_NUMBER s3://bugsnag-unity-artifacts/$TRAVIS_BUILD_NUMBER
