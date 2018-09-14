@@ -16,6 +16,7 @@ env:
   - PATH=$HOME/Library/Python/2.7/bin:$PATH
 before_install:
 - bundle install
+- brew tap caskroom/cask
 - pip install --user awscli
 - mkdir -p ~/$TRAVIS_BUILD_NUMBER
 - aws s3 sync s3://bugsnag-unity-artifacts/$TRAVIS_BUILD_NUMBER ~/$TRAVIS_BUILD_NUMBER
