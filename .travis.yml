@@ -11,6 +11,7 @@ cache:
   - "$HOME/.android/build-cache"
 env:
   global:
+  - ANDROID_HOME=/usr/local/share/android-sdk
   - TERM=dumb
   - PATH=$HOME/Library/Python/2.7/bin:$PATH
 before_install:
