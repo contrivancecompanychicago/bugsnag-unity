@@ -76,7 +76,7 @@ end
 def export_package
   package_output = File.join(current_directory, "Bugsnag.unitypackage")
   rm_f package_output
-  unity "-projectPath", project_path, "-exportPackage", "Assets", package_output
+  unity "-projectPath", project_path, "-exportPackage", "Assets", package_output, force_free: false
 end
 
 namespace :plugin do
