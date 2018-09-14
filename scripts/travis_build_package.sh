@@ -13,4 +13,4 @@ yes | sdkmanager --licenses
 bundle exec rake travis:export_plugin
 
 # copy it to the directory that is being synchronised with S3
-cp Bugsnag.unitypackage ~/$TRAVIS_BUILD_NUMBER || handle_failure $?
+cp Bugsnag.unitypackage ~/$TRAVIS_BUILD_NUMBER
