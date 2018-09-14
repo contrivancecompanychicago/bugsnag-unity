@@ -17,7 +17,8 @@ handle_failure () {
 
 brew tap caskroom/cask
 
-brew cask install android-sdk mono bugsnag/unity/unity-2017-4-1f1
+brew install mono
+brew cask install android-sdk bugsnag/unity/unity-2017-4-1f1
 
 yes | sdkmanager "platforms;android-27"
 yes | sdkmanager --licenses
