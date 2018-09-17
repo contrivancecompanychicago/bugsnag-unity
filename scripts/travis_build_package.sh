@@ -3,7 +3,7 @@
 brew cask install \
   mono-mdk \
   android-sdk \
-  bugsnag/unity/unity-2017-4-1f1
+  bugsnag/unity/$UNITY_VERSION
 
 export PATH="$PATH:/Library/Frameworks/Mono.framework/Versions/Current/Commands"
 
