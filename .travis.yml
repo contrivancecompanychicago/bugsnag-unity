@@ -17,6 +17,7 @@ env:
 stages:
 - build
 - test
+- deploy
 before_install:
 - bundle install
 - brew tap caskroom/cask
@@ -29,9 +30,18 @@ jobs:
   include:
   - stage: build
     env:
-      - UNITY_VERSION=unity-2017-4-1f1
+    - UNITY_VERSION=unity-2017-4-1f1
     script: scripts/travis_build_package.sh
   - stage: test
     env:
-      - UNITY_VERSION=unity-2017-4-1f1
+    - UNITY_VERSION=unity-2017-4-1f1
     script: scripts/travis_test_package.sh
+deploy:
+  provider: releases
+  api_key:
+    secure: Xq3/kuru6e1hrslzvrOR8daDhJ+24I3vB3+4TBknEnX8GLitNAoR3N+qYXIFH7bwtVZP54yVut9MYrtq6LkEELfU6b7m0v/WV+O5LwrL9vFUwGVVoBAlLE/Yhr6GZ1Lxsz4+Km/lrFO74qc3X0MqJ6XpQt3puy3pOYzo2l+mOzU=
+  file: "~/$TRAVIS_BUILD_NUMBER/Bugsnag.unitypackage"
+  draft: true
+  on:
+    tags: true
+    repo: bugsnag/bugsnag-unity
