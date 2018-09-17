@@ -47,10 +47,13 @@ end
 # Run a command with the unity executable and the default command line parameters
 # that we apply
 #
-def unity(*cmd, force_free: true)
+def unity(*cmd, force_free: true, no_graphics: true)
   cmd_prepend = [unity_executable, "-force-free", "-batchmode", "-nographics", "-logFile", "unity.log", "-quit"]
   unless force_free
-    cmd_prepend.slice! 1
+    cmd_prepend = cmd_prepend - ["-force-free"]
+  end
+  unless no_graphics
+    cmd_prepend = cmd_prepend - ["-nographics"]
   end
   cmd = cmd.unshift(*cmd_prepend)
   sh *cmd do |ok, res|
@@ -225,12 +228,12 @@ end
 namespace :travis do
   task export_plugin: %w[plugin:build:all] do
     # activate the unity license
-    unity "-serial", ENV["UNITY_SERIAL"], "-username", ENV["UNITY_USERNAME"], "-password", ENV["UNITY_PASSWORD"], force_free: false
+    unity "-serial", ENV["UNITY_SERIAL"], "-username", ENV["UNITY_USERNAME"], "-password", ENV["UNITY_PASSWORD"], force_free: false, no_graphics: false
     sleep 10
     begin
       export_package
     ensure
-      unity "-returnlicense", force_free: false
+      unity "-returnlicense", force_free: false, no_graphics: false
       sleep 10
     end
   end
