@@ -226,10 +226,12 @@ namespace :travis do
   task export_plugin: %w[plugin:build:all] do
     # activate the unity license
     unity "-serial", ENV["UNITY_SERIAL"], "-username", ENV["UNITY_USERNAME"], "-password", ENV["UNITY_PASSWORD"], force_free: false
+    sleep 10
     begin
       export_package
     ensure
       unity "-returnlicense", force_free: false
+      sleep 10
     end
   end
 
