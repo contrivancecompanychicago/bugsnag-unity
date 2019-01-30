@@ -1,5 +1,11 @@
 # Changelog
 
+## TBD
+
+### Enhancements
+
+* Add support for detecting and reporting Android NDK C/C++ crashes
+
 ## 4.1.2 (2019-01-22)
 
 ### Bug fixes
